@@ -1,0 +1,4 @@
+data_path: /Users/uqbbalde/Desktop/Uni_Studies/projects/MedullaBlastoma/data/seurat_rds/merged.rds
+de_types:
+ - TMM_Limma_Voom_TREAT
+out_path: /Users/uqbbalde/Desktop/Uni_Studies/projects/MedullaBlastoma/data/DE_out/
