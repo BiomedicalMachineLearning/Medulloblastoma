@@ -90,8 +90,8 @@ loadGeneSets <- function(load_SHH=T, load_gsea=T, load_gbm=T, human=T, filter_ge
     rownames(gsea_humantreat) <- gsea_humantreat[,'Term']
     # From DESeq2 analysis #
     # terms <- c("Cellular senescence", "Myogenesis", "GCNP SHH UP LATE.V1 UP",
-    #            "Hypoxia", "GCNP SHH UP EARLY.V1 UP", "SP1 human", "TP53 human",
-    #            "VEGF A UP.V1 DN", "Myc Targets V1", "E2F1 human", "G2-M Checkpoint",
+    #            "Hypoxia", "GCNP SHH UP EARLY.V1 UP", "SP1 data", "TP53 data",
+    #            "VEGF A UP.V1 DN", "Myc Targets V1", "E2F1 data", "G2-M Checkpoint",
     #            "E2F Targets")
     if (!min_gsea) {
       terms <- c('Myogenesis', "GCNP SHH UP LATE.V1 UP", "E2F1 human", "E2F Targets",
@@ -103,7 +103,7 @@ loadGeneSets <- function(load_SHH=T, load_gsea=T, load_gbm=T, human=T, filter_ge
       terms <- c("E2F Targets","G2-M Checkpoint", "Epithelial Mesenchymal Transition",
                  "Cell adhesion molecules (CAMs)")
     }
-    #terms <- c("E2F1 human", "E2F Targets", "Cell adhesion molecules (CAMs)", 
+    #terms <- c("E2F1 data", "E2F Targets", "Cell adhesion molecules (CAMs)",
     #           "KRAS.600 UP.V1 UP", "G1 to S cell cycle control WP45",
     #           "Epithelial Mesenchymal Transition")
     gsea_humantreat <- gsea_humantreat[terms,]
@@ -207,7 +207,7 @@ genGiottoFromSeurat <- function(merged, human_genes=T, #TODO impliment human_gen
                                 python_path=NULL, ...){
   # Takes in a Seurat object and converts to a Giotto object #
   # -> Assumes Seurat object SCT normalised 
-  # -> Assumes only desired human genes, and hence only subset to these
+  # -> Assumes only desired data genes, and hence only subset to these
   # -> Extra arguments parsed to 'createGiottoObject' function.
   print("Reminder: this function subset to just the human genes !")
   raw_expr <- merged@assays$SCT@counts
@@ -272,7 +272,7 @@ getSpeciesGenes <- function(count_matrix, species_prefix, strip_prefix=F){
 
 getSpeciesEquivalentGenes <- function(genes, count_matrix, 
                                       prefixes=c('hg38-', 'mm10-')){
-  # Given a list of genes specified in normal human format (MITF),
+  # Given a list of genes specified in normal data format (MITF),
   # retrieve the genes which match the inputted genes, assuming
   # species genes specified with prefixes: 'hg38-', 'mm10-'
   gene_by_species <- list()

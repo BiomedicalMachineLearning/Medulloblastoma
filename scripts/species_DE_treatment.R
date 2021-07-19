@@ -1,10 +1,10 @@
 # The purpose of this script is to perform differential
 # expression using DESeq2 between the treated versus untreated
-# samples between the different species spots (human, mouse, mix)
+# samples between the different species spots (data, mouse, mix)
 
 # Note that only testing for SCTransform genes, and for each set of spots,
 # only testing for the relevant genes.
-# human - human genes, mouse - mouse genes, mix - both genes
+# data - data genes, mouse - mouse genes, mix - both genes
 
 ################################################################################
                     # Environment setup #

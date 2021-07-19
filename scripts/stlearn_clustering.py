@@ -84,7 +84,7 @@ for i in range(0, 4):
 ################################################################################
 ####### Comparing the pseudo-bulked clusters between samples to get equivalent
 ####### cluster labels.
-# Adding in the species information, subset to human/mix, cluster pseudobulk #
+# Adding in the species information, subset to data/mix, cluster pseudobulk #
 human_datas = []
 dfs = []
 obs_names = []
@@ -136,7 +136,7 @@ data_df_human = heat_hs.formatData(data_df_human, labels, label_set, 'sum')[0]
 ## dataset to measure similarity against that as a reference
 ref = pandas.read_csv('data/third_party_data/Vladoiu2019_Nature_scRNA/'
                       'Vladoiu2019_pseudo_counts.txt', sep='\t', index_col=0)
-# Converting gene names to human format #
+# Converting gene names to data format #
 ref_genes = [gene.upper() for gene in ref.index]
 ref.index = ref_genes
 
@@ -334,7 +334,7 @@ NOTE: NKG2D encoded by KLRK1 -
 
     Important ligands of the above, which are present on MDB cell surface:
     * ULBP2 (found in the tumor genes, not in mouse)
-    * MICA (found only in the human)
+    * MICA (found only in the data)
 """
 z_scores = pandas.DataFrame(zscore(sims.values, 1),
                                index=data_df_human.columns, columns=ref.columns)
@@ -406,7 +406,7 @@ st.pl.cluster_plot(datas[0], dpi=100, use_label='binary_labels')
 plt.show()
 
 ######## Attempts at measuring similarity between clusters/clustering ##########
-# Adding in the species information, subset to human/mix, cluster pseudobulk #
+# Adding in the species information, subset to data/mix, cluster pseudobulk #
 human_datas = []
 species_metas = ['A1_treated_species.txt', 'B1_treated_species.txt',
                  'C1_untreated_species.txt', 'D1_untreated_species.txt']
@@ -417,9 +417,9 @@ for i, species_meta in enumerate(species_metas):
     meta = pandas.read_csv(data_dir+'spot_meta/'+species_meta, sep=' ',
                            index_col=0, header=0)
     species = meta.values[:, 0].astype(str)
-    human_mix = numpy.logical_or(species=='human', species=='mix')
+    human_mix = numpy.logical_or(species=='data', species=='mix')
 
-    # Subsetting to human/mix and checking with plot #
+    # Subsetting to data/mix and checking with plot #
     data_ordered = datas[i][meta.index.values, :]
     data_human_mix = data_ordered[human_mix, :]
     data_human_mix.obs['species'] = species[human_mix]

@@ -68,7 +68,7 @@ dhs.plot_heatmap(gene_stats, lcpms, out_plots+'DE_heatmap.pdf',
 
 ###### Making Venn diagrams of overlap with stable genes #########
 stable_genes = pd.read_csv('data/third_party_data/stable_genes.txt', sep='\t')
-human_stable = {'hg38-'+gene for gene in stable_genes.loc[:,'human'].values}
+human_stable = {'hg38-'+gene for gene in stable_genes.loc[:,'data'].values}
 mouse_stable = {'mm10-'+gene for gene in stable_genes.loc[:,'mouse'].values
                          if type(gene)!=float}
                          

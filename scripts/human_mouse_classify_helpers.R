@@ -1,5 +1,5 @@
 # The purpose of this script is to contain helper functions
-# for classifying the spots into human vs mouse.
+# for classifying the spots into data vs mouse.
 
 library(stringr)
 source('scripts/helpers.R')
@@ -19,9 +19,9 @@ getSpeciesScore <- function(spatial, species_prefix='hg38',
 }
 
 classifyByCuttoffs <- function(scores, human_cutoffs, mouse_cutoffs){
-  # Sets hard-cutoffs for what's considered human versus mouse 
+  # Sets hard-cutoffs for what's considered data versus mouse
   # based on the scores. 
-  # Assumes human score in column 1 of scores, and mouse in column 1
+  # Assumes data score in column 1 of scores, and mouse in column 1
   species <- character(nrow(scores))
   
   human_bool_x <- scores[,1]>human_cutoffs[1]

@@ -95,7 +95,7 @@ for cell_type in de_genes.columns:
                      if gene.upper() in human_df.index]
     de_results[cell_type] = [gene.upper() for gene in present_genes]
 
-# Converting gene names to human format #
+# Converting gene names to data format #
 ref_genes = [gene.upper() for gene in ref.index]
 ref.index = ref_genes
 

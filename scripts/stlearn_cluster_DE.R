@@ -33,7 +33,7 @@ de_by_sample <- list()
 for (i in 1:length(spatials)) {
   spatial <- spatials[[i]]
   
-  # Subsetting to just human #
+  # Subsetting to just data #
   Idents(spatial) <- 'species'
   human <- subset(spatial, idents=c('human', 'mix'))
   human <- SCTransform(human, assay = "Spatial", verbose = T,

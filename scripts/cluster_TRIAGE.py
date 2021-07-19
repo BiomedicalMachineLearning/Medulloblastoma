@@ -43,7 +43,7 @@ spot_filters = [pd.read_csv(data_dir+'ryan_ids/'+filt_file,
 
 samples = ['A1', 'B1', 'C1', 'D1']
 
-# Loading in the un-normalised counts, filtered to human/mix spots.
+# Loading in the un-normalised counts, filtered to data/mix spots.
 datas = [st_hs.load(sample_dir, spot_filters[i], species_metas[i])
          for i, sample_dir in enumerate(data_dirs)]
 # Removing lowly expressed genes
@@ -70,7 +70,7 @@ for i, data in enumerate(datas):
     counts = counts.loc[:,ordered_obs]
     print(numpy.all(counts.columns.values==ordered_obs))
 
-    # Subsetting to human genes #
+    # Subsetting to data genes #
     human_genes = hs.getSpeciesGenes(counts, 'hg38-')
     counts = counts.loc[human_genes, :]
     counts.index = hs.getSpeciesGenes(counts, 'hg38-', remove_prefix=True)
@@ -90,7 +90,7 @@ for i, data in enumerate(datas):
     pseudobulk = st_hs.norm_df(pseudobulk, scale=True)
 
     # Performing TRIAGE analysis #
-    triage = triage_analysis.Triage(organism='human', average=False,
+    triage = triage_analysis.Triage(organism='data', average=False,
                                                                  binary_data='')
     triaged = triage.fit_transform(pseudobulk)
     triaged_top = triaged.iloc[0:300,:]

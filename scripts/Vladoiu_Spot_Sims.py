@@ -1,5 +1,5 @@
 """ The purpose of this script:
-Measures the cosine similarity between the human/mix spots &
+Measures the cosine similarity between the data/mix spots &
 the pseudobulked cell types !
 
     OUTPUT: data/spot_meta/vladoiu_spot_sims.txt
@@ -95,7 +95,7 @@ top_de = np.unique(top_de)
 
 ref = ref.loc[top_de, :]
 
-# Converting gene names to human format #
+# Converting gene names to data format #
 ref_genes = [gene.upper() for gene in ref.index]
 ref.index = ref_genes
 

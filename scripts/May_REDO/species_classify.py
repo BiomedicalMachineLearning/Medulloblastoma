@@ -79,7 +79,7 @@ for i, data in enumerate( datas ):
         # counts = np.apply_along_axis(np.sum, 1, expr[:, gene_bool])
         # species_counts[species_prefix][prefixes[i]] = counts
 
-colors = {'human': 'dodgerblue', 'mouse': 'mediumseagreen', 'mix': 'gold'}
+colors = {'data': 'dodgerblue', 'mouse': 'mediumseagreen', 'mix': 'gold'}
 spot_sizes = [15, 20, 15, 15]
 for i, (data, prefix) in enumerate( zip(datas, prefixes) ):
     data.uns['species_colors'] = list(colors.values())

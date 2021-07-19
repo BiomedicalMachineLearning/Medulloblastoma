@@ -44,9 +44,9 @@ datas = [st_hs.load_and_norm_LRAnalysis(
 ################################################################################
                 # Performing cci analysis #
 ################################################################################
-# Load the NATMI literature-curated database of LR pairs, human formatted #
+# Load the NATMI literature-curated database of LR pairs, data formatted #
 lrs_ = st.tl.cci.load_lrs(['connectomeDB2020_lit'])
-# Testing for mice-human interactions !!!!
+# Testing for mice-data interactions !!!!
 lrs = ['hg38-'+lr.replace('_', '_mm10-') for lr in lrs_]
 lrs.extend( ['hg38-'+lr.replace('_', '_hg38-') for lr in lrs_] )
 lrs = np.array(lrs+['mm10-'+lr.replace('_', '_hg38-') for lr in lrs_])

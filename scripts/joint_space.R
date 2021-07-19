@@ -87,10 +87,10 @@ obj.list <- lapply(X = obj.list, FUN = function(x) {
 # select features that are repeatedly variable across datasets for integration
 features <- SelectIntegrationFeatures(object.list = obj.list)
 
-# Attempting to remove the human genes ! #
-#human_genes <- getSpeciesGenes(human@assays$Spatial@data, 'hg38')
+# Attempting to remove the data genes ! #
+#human_genes <- getSpeciesGenes(data@assays$Spatial@data, 'hg38')
 #human_features <- intersect(human_genes, features)
-# 2393 human features
+# 2393 data features
 
 # Finding anchors
 anchors <- FindIntegrationAnchors(object.list = obj.list)
@@ -162,8 +162,8 @@ DimPlot(human.combined, reduction = "umap", shuffle=T,#split.by='sample',
 DimPlot(human.combined, reduction = "umap", split.by='treatment', 
         group.by = 'vladoiu.labels', pt.size=1, dims=c(1,2))
 
-#human.combined <- readRDS('data/seurat_rds/integrated.rds')
-#saveRDS(human.combined, 'data/seurat_rds/integrated.rds')
+#data.combined <- readRDS('data/seurat_rds/integrated.rds')
+#saveRDS(data.combined, 'data/seurat_rds/integrated.rds')
 
 ################################################################################
               # Performing Cell Cycle Scoring #

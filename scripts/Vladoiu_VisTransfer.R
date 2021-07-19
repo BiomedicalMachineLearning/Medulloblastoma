@@ -34,7 +34,7 @@ labelByMaxProb <- function(seurat_obj, assay.name='human_vladoiu_preds') {
 }
 
 ###################### HUMAN ###############################
-####### Adding labels for the human genes ######
+####### Adding labels for the data genes ######
 DefaultAssay(merged) <- "human_vladoiu_preds"
 human_pred_labels <- labelByMaxProb(merged)
 merged <- AddMetaData(merged, human_pred_labels, col.name='human_vladoiu_pred_labels')
@@ -45,7 +45,7 @@ for (i in 1:length(pred_labels)) {
   human_pred_freqs[[pred_labels[i]]] <- length(which(human_pred_labels==pred_labels[i]))
 }
 
-####### Using human/mix spots ########
+####### Using data/mix spots ########
 Idents(merged) <- 'species'
 human <- subset(merged, idents=c('human', 'mix'))
 

@@ -15,9 +15,9 @@ def species_subset(data, species_meta):
     meta = pandas.read_csv(data_dir+'spot_meta/'+species_meta, sep=' ',
                            index_col=0, header=0)
     species = meta.values[:, 0].astype(str)
-    human_mix = numpy.logical_or(species=='human', species=='mix')
+    human_mix = numpy.logical_or(species=='data', species=='mix')
 
-    # Subsetting to human/mix and checking with plot #
+    # Subsetting to data/mix and checking with plot #
     data_ordered = data[meta.index.values, :]
     data_human_mix = data_ordered[human_mix, :]
     data_human_mix.obs['species'] = species[human_mix]
@@ -26,7 +26,7 @@ def species_subset(data, species_meta):
     return data_human_mix
 
 def load(sample_dir, spot_filter, species_meta, subset=True):
-    """Loads in the data and filters for QC and human/mix spots"""
+    """Loads in the data and filters for QC and data/mix spots"""
     data = st.Read10X(sample_dir)[spot_filter, :]
     data.var_names_make_unique()
     data.var_names = numpy.array([var_name.replace('_', '-')
@@ -34,7 +34,7 @@ def load(sample_dir, spot_filter, species_meta, subset=True):
     # corrects errors down-stream #
     # data.uns["spatial"] = data.uns["spatial"]["Visium8_A1_Hybrid"]
 
-    ### Subsetting to human/mix spots ###
+    ### Subsetting to data/mix spots ###
     if subset:
         data = species_subset(data, species_meta)
 
@@ -97,7 +97,7 @@ def load_and_norm_LRAnalysis(sample_dir, spot_filter, species_meta,
     return data
 
 def subset_to_human_spots(datas):
-    """ Subsets the anndatas to human spots.
+    """ Subsets the anndatas to data spots.
 
     :return:
     """
@@ -109,9 +109,9 @@ def subset_to_human_spots(datas):
         meta = pandas.read_csv(data_dir+'spot_meta/'+species_meta, sep=' ',
                                index_col=0, header=0)
         species = meta.values[:, 0].astype(str)
-        human_mix = numpy.logical_or(species=='human', species=='mix')
+        human_mix = numpy.logical_or(species=='data', species=='mix')
 
-        # Subsetting to human/mix and checking with plot #
+        # Subsetting to data/mix and checking with plot #
         data_ordered = datas[i][meta.index.values, :]
         data_human_mix = data_ordered[human_mix, :]
         data_human_mix.obs['species'] = species[human_mix]

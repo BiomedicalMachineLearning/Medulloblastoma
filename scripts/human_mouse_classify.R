@@ -1,4 +1,4 @@
-# The purpose of this script is to classify the spots into human vs mouse
+# The purpose of this script is to classify the spots into data vs mouse
 # based on the number of reads which are from each.
 
 ################################################################################
@@ -21,7 +21,7 @@ data_names <- path_info[[2]]
 spatials <- readRDSFiles(data_paths, data_names)
 
 ################################################################################
-          # Predicting human vs. mouse tissue spots #
+          # Predicting data vs. mouse tissue spots #
 ################################################################################
 source('scripts/human_mouse_classify_helpers.R')
 

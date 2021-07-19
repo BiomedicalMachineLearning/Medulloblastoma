@@ -22,9 +22,9 @@ data_dir <- '/30days/uqbbalde/MedullaBlastoma/'
 spatial_dir <- paste(data_dir, 'data/seurat_rds/all.rds', sep='')
 merged <- readRDS(spatial_dir)
 
-### Separating into human v mouse genes in order to get different 
+### Separating into data v mouse genes in order to get different
 ### spaces, that way can represent the variation due to mouse cells
-### versus variation due to human expression. Will give different 
+### versus variation due to data expression. Will give different
 ### interpretations. 
 human_gene_names <- getSpeciesGenes(merged@assays$Spatial@counts, 'hg38-') 
 mouse_gene_names <- getSpeciesGenes(merged@assays$Spatial@counts, 'mm10-')
@@ -83,7 +83,7 @@ saveRDS(merged, spatial_dir)
 # Saving the text files containing the cell estimates #
 decon_dir <- paste(data_dir, 'data/decon_out/', sep='')
 
-# Deconvolution results based on using the human gene homologues #
+# Deconvolution results based on using the data gene homologues #
 human_path <- paste(decon_dir, 'human_vladoiu_cellprops.txt', sep='')
 write.table(merged@assays$human_vladoiu_preds@data, human_path, 
 		sep='\t', quote=F)

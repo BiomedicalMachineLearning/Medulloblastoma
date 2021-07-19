@@ -20,7 +20,7 @@ def setUp():
     os.chdir('/Users/uqbbalde/Desktop/Uni_Studies/projects/MedullaBlastoma/')
 
 def load(sample_dir, prefix):
-    """Loads in the data and filters for QC and human/mix spots"""
+    """Loads in the data and filters for QC and data/mix spots"""
     data = st.Read10X(sample_dir)
     data.var_names_make_unique()
     data.var_names = numpy.array([var_name.replace('_', '-')

@@ -15,6 +15,6 @@ rule runDE_TMM_Limma_Voom: # Runs DE using Pseudo_TMM_Limma_Voom approach
     output:
         config['out_path']+'Pseudo_TMM_Limma_Voom/deResults_TMM_Limma_Voom.xlsx'
     script:
-          "scripts/Pseudo_TMM_Limma_Voom_DE.R"
+          "scripts/Pseudo_TMM_Limma_Voom_DE_mixTreatvsUntreat.R"
 
 

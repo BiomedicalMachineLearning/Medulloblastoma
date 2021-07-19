@@ -1,5 +1,5 @@
 # The purpose of this script is to load in each of the tissue slices,
-# normalise using SCTransform (separately), annotated into human vs mouse spots,
+# normalise using SCTransform (separately), annotated into data vs mouse spots,
 # and then save to rds files.
 # NOTE: this includes Ryan's filtering !!!
 # INPUT: ryan_ids/*, VISIUM*/

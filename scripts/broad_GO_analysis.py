@@ -17,7 +17,7 @@ import beautifulcells.postprocessing.format.format as format
                         # Reading in the data #
 ################################################################################
 gene_de_names = ['mouse.treatment_up', 'mouse.treatment_down',
-                 'human.treatment_up', 'human.treatment_down',
+                 'data.treatment_up', 'data.treatment_down',
                  'mix.treatment_up', 'mix.treatment_down']
 de_results = pandas.read_excel('data/supps/de_results_MDB.xlsx', gene_de_names,
                              engine='openpyxl', index_col=0)
@@ -31,8 +31,8 @@ for treat in gene_treats:
     down_results = de_results[f'{treat}_down']
 
     # Filtering by species #
-    if 'human' in treat or 'mouse' in treat:
-        prefix = 'hg38-' if 'human' in treat else 'mm10-'
+    if 'data' in treat or 'mouse' in treat:
+        prefix = 'hg38-' if 'data' in treat else 'mm10-'
         up_results = up_results.loc[hs.getSpeciesGenes(up_results, prefix), :]
         down_results = down_results.loc[
                                     hs.getSpeciesGenes(down_results, prefix), :]
@@ -48,7 +48,7 @@ for treat in gene_treats:
     preranked[treat] = pre_ranked_i
 
 """
-For the human spots, just using the human DE genes, for the mouse spots,
+For the data spots, just using the data DE genes, for the mouse spots,
 just using mouse DE genes. Ignoring mixed for now, complicated & not important.
 """
 
@@ -68,7 +68,7 @@ gene_sets = [#'CCLE_Proteomics_2020', 'Cancer_Cell_Line_Encyclopedia',
 # NOTE: I edited the source code of GSEApy to get this to work, namely had to
 #       change the url string query.
 gsea_results = {}
-for treat in ['mouse.treatment', 'human.treatment']:
+for treat in ['mouse.treatment', 'data.treatment']:
     df = preranked[treat]
     species = treat.split('.')[0]
     species = species[0].upper()+species[1::]
@@ -83,8 +83,8 @@ for treat in ['mouse.treatment', 'human.treatment']:
 
 ######### Determining the significant results, and moving to a separate
 ########  summary folder
-sig_dfs = {'mouse.treatment': [], 'human.treatment': []}
-db_gene_set_labels = {'mouse.treatment': [], 'human.treatment': []}
+sig_dfs = {'mouse.treatment': [], 'data.treatment': []}
+db_gene_set_labels = {'mouse.treatment': [], 'data.treatment': []}
 for folder in gsea_results:
     results = gsea_results[folder].results
     treat = folder.split('/')[0]

@@ -58,7 +58,7 @@ for (i in 1:length(enrich_score_names)) {
 
 # Plotting also with violin plots #
 # Idents(merged) <- 'species'
-# human <- subset(merged, idents=c('human', 'mix'))
+# data <- subset(merged, idents=c('data', 'mix'))
 
 Idents(human) <- 'treatment'
 
@@ -121,7 +121,7 @@ dealWithPlot(T, plot_name, plot, width=15, height=4)
 # for (i in 1:length(gene_groups)) {
 #   group_genes <- gene_groups[[i]]
 #   genes_wPrefix <- str_c('hg38-', genes)
-#   DotPlot(human, features = genes_wPrefix) + RotatedAxis()
+#   DotPlot(data, features = genes_wPrefix) + RotatedAxis()
 # }
 
 

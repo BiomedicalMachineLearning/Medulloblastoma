@@ -17,7 +17,7 @@ import beautifulcells.postprocessing.format.format as format
 ################################################################################
                         # Reading in the data #
 ################################################################################
-gene_de_names = ['human.treatment_up', 'human.treatment_down']
+gene_de_names = ['data.treatment_up', 'data.treatment_down']
 de_results = pandas.read_excel('data/DE_out/Pseudo_TMM_Limma_Voom/de_results_PseudoLimma_withoutLogFC.xlsx',
                                gene_de_names, engine='openpyxl',
                                index_col=0)
@@ -31,8 +31,8 @@ for treat in gene_treats:
     down_results = de_results[f'{treat}_down']
 
     # Filtering by species #
-    if 'human' in treat or 'mouse' in treat:
-        prefix = 'hg38-' if 'human' in treat else 'mm10-'
+    if 'data' in treat or 'mouse' in treat:
+        prefix = 'hg38-' if 'data' in treat else 'mm10-'
         up_results = up_results.loc[hs.getSpeciesGenes(up_results, prefix), :]
         down_results = down_results.loc[
                                     hs.getSpeciesGenes(down_results, prefix), :]
@@ -48,7 +48,7 @@ for treat in gene_treats:
     preranked[treat] = pre_ranked_i
 
 """
-For the human spots, just using the human DE genes, for the mouse spots,
+For the data spots, just using the data DE genes, for the mouse spots,
 just using mouse DE genes. Ignoring mixed for now, complicated & not important.
 """
 

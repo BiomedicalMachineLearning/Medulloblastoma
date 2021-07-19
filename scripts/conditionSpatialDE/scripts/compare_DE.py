@@ -21,7 +21,7 @@ import beautifulcells.visualisation.helpers as vhs
 ################################################################################
                         # Reading in the data #
 ################################################################################
-gene_de_names = ['human.treatment_up', 'human.treatment_down']
+gene_de_names = ['data.treatment_up', 'data.treatment_down']
 de_files = ['data/DE_out/Pseudo_TMM_Limma_Voom/de_results_PseudoLimma_withoutLogFC.xlsx',
             'data/supps/de_results_MDB.xlsx']
 de_names = ['PseudoLimma', 'DESeq2']

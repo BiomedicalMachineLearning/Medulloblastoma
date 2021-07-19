@@ -70,7 +70,7 @@ dealWithPlot(T, plot_name, plot, width=15, height=4)
 # for (i in 1:length(gene_groups)) {
 #   group_genes <- gene_groups[[i]]
 #   genes_wPrefix <- str_c('hg38-', genes)
-#   DotPlot(human, features = genes_wPrefix) + RotatedAxis()
+#   DotPlot(data, features = genes_wPrefix) + RotatedAxis()
 # }
 
 

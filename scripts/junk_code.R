@@ -4,11 +4,11 @@
 
 # --- Method 1: within species, DE between treat v control, sample agnostic ---#
 # Idents(merged) <- 'species'
-# species <- 'human'
+# species <- 'data'
 # sub <- subset(merged, idents = species)
 
 ######### From incorrect attempt ####
-# species_names <- c('human', 'mouse', 'mix')
+# species_names <- c('data', 'mouse', 'mix')
 # sample_names <- c('A1_treated', 'B1_treated', 'C1_untreated', 'D1_untreated')
 # sample_nested <- character(ncol(count_matrix))
 # for (i in 1:length(species_names)) {
@@ -40,7 +40,7 @@
 # 
 # treatment <- as.character(design_matrix[,'treatment']) == "treated"
 # mouse <- as.character(design_matrix[,'species']) == "mouse"
-# human <- as.character(design_matrix[,'species']) == "human"
+# data <- as.character(design_matrix[,'species']) == "data"
 # 
 # samples_nested <- character( length(treatment) )
 # samples_nested <- 
@@ -56,7 +56,7 @@
 # genes that were in a particular species when calling DE #
 
 # Idents(merged) <- 'species'
-# species <- 'human'
+# species <- 'data'
 # sub <- subset(merged, idents = species) 
 # print(unique(sub$species))
 # sctransform_genes <- rownames(sub@assays$SCT@data)
@@ -64,7 +64,7 @@
 # design_matrix <- as.data.frame(cbind(sub$sample, sub$treatment))
 # colnames(design_matrix) <- c('sample', 'treatment')
 # 
-# if (species == 'human') {
+# if (species == 'data') {
 #   sub_genes <- getSpeciesGenes(count_matrix, 'hg38')
 # } else if (species == 'mouse') { 
 #   sub_genes <- getSpeciesGenes(count_matrix, 'mm10')
@@ -80,7 +80,7 @@
 
 
 
-####### From predicting human vs mouse ##########
+####### From predicting data vs mouse ##########
 
 #### NOT IN USE: Testing with on case ####
 # human_scores <- getSpeciesScore(spatials[[1]], species_prefix='hg38', 
@@ -97,7 +97,7 @@
 # 
 # human_bool_x <- scores[,1]>human_cutoffs[1]
 # human_bool_y <- scores[,2]<human_cutoffs[2]
-# species[human_bool_x & human_bool_y] <- 'human'
+# species[human_bool_x & human_bool_y] <- 'data'
 # 
 # mouse_bool_x <- scores[,1]<mouse_cutoffs[1]
 # mouse_bool_y <- scores[,2]>mouse_cutoffs[2]
@@ -118,8 +118,8 @@
 
 
 #scores[,'clusters'] <- as.character(clusters)
-#mapping <- list('0'='human', '1'='mouse', '2'='mouse',
-#                '3'='mouse', '4'='human', '5'='mix')
+#mapping <- list('0'='data', '1'='mouse', '2'='mouse',
+#                '3'='mouse', '4'='data', '5'='mix')
 #scores[,'species'] <- replaceByMapping(mapping, scores[,'clusters'])
 
 
@@ -143,7 +143,7 @@
 #hist(ratios[ratios>0.2], breaks=100)
 #scores[,'ratios'] <- ratios
 
-# Clustering into groups to identify human vs mouse vs mixture #
+# Clustering into groups to identify data vs mouse vs mixture #
 #clusterer <- sklearn_cluster$KMeans(n_clusters=as.integer(2))
 #clusters <- clusterer$fit_predict(scores[,1:2])
 #scores[,'clusters'] <- clusters

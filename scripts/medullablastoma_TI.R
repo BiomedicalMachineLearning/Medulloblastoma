@@ -33,7 +33,7 @@ var_genes <- var_genes[var_genes_bool]
 
 merged <- readRDS('data/seurat_rds/merged.rds')
 
-## Subsetting to just the human/mixed spots ##
+## Subsetting to just the data/mixed spots ##
 Idents(merged) <- 'species'
 human <- subset(merged, idents=c('human', 'mix'))
 VariableFeatures(human) <- var_genes

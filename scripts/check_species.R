@@ -50,7 +50,7 @@ for (i in 1:length(spatials)){
 
 
 ################################################################################
-              # Predicting human vs. mouse tissue spots #
+              # Predicting data vs. mouse tissue spots #
 ################################################################################
 source('scripts/human_mouse_classify_helpers.R')
 
