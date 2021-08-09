@@ -37,7 +37,18 @@ X1_QC_SpeciesClassify/
                      OUTPUT: * data/spot_meta/species_classify_v2/
                              * figure_components/species_figure/
                              
+X2_DEAnalysis/
+
+    X1_Pseudo_Limma_DE_human.R -> Performs the DE between Palbociclib treated & 
+                            control samples with pseudobulked human spots/genes.
+                            
+                            
+                            
+    X2_Pseudo_Limma_DE_mixHuman.R ->   
     
+    X3_Pseudo_Limma_DE_mixMouse.R ->  
+    
+    X4_Pseudo_Limma_DE_mouse.R ->                    
                              
                     
     

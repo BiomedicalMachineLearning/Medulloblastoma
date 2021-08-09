@@ -14,6 +14,27 @@ spot_meta/QC/*
 .idea/
 data/seurat_rds/
 
+# Related to X2_
+data/DE_out/Pseudo_Limma_human/*.pdf
+data/DE_out/Pseudo_Limma_human/*.xlsx
+data/DE_out/Pseudo_Limma_human/*.rds
+data/DE_out/Pseudo_Limma_human/data/*
+
+data/DE_out/Pseudo_Limma_mixHuman/*.pdf
+data/DE_out/Pseudo_Limma_mixHuman/*.xlsx
+data/DE_out/Pseudo_Limma_mixHuman/*.rds
+data/DE_out/Pseudo_Limma_mixHuman/data/*
+
+data/DE_out/Pseudo_Limma_mixMouse/*.pdf
+data/DE_out/Pseudo_Limma_mixMouse/*.xlsx
+data/DE_out/Pseudo_Limma_mixMouse/*.rds
+data/DE_out/Pseudo_Limma_mixMouse/data/*
+
+data/DE_out/Pseudo_Limma_mouse/*.pdf
+data/DE_out/Pseudo_Limma_mouse/*.xlsx
+data/DE_out/Pseudo_Limma_mouse/*.rds
+data/DE_out/Pseudo_Limma_mouse/data/*
+
 
 
 

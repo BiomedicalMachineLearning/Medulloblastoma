@@ -1,6 +1,7 @@
-# BrainCancer
-For sharing scripts on analyses of mouse-PDX of MedulloBlastoma Visium spatial 
-RNA-seq between Palbociclib treated & control samples.
+# Spatial transcriptomics analysis of Medulloblastoma PDX models
+For sharing scripts on analyses of 
+MedulloBlastoma patient-derived xenograft (MB-PDX) of 
+Visium spatial RNA-seq between Palbociclib treated & control samples.
 
 ## Installation
 Need to install requirements.txt.
@@ -25,5 +26,10 @@ Need to install requirements.txt.
         X1_QC_SpeciesClassify/ -> Contains scripts related to spot QC & 
                                            classifying spots by human/mouse/mix.
 
+        X2_DEAnalysis/ -> Contains scripts related to the DE analysis between
+                            Palbo treated & control samples pseudobulked by 
+                            human/mix/mouse spots. 
+                            Also includes subsequent GSEA analyses. 
 
+                 
 
