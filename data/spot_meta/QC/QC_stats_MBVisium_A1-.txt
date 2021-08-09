@@ -1,0 +1,3 @@
+	nCells	gene_counts_cutoff	gene_counts_cutoff	gene_counts_cutoff	umi_gene_ratio_minimum	umi_gene_ratio_median	umi_gene_ratio_mean	umi_gene_ratio_maximum	umis_minimum	umis_median	umis_mean	umis_maximum	gene_counts_minimum	gene_counts_median	gene_counts_mean	gene_counts_maximum
+before	3024.0	0.0	0.0	0.0	1.0612903225806452	1.695602825891612	1.6952593161179068	3.0118143459915614	236.0	2349.0	2660.7814153439153	14065.0	202.0	1410.0	1489.8323412698412	5228.0
+after	3024.0	0.0	0.0	200.0	1.0612903225806452	1.695602825891612	1.6952593161179068	3.0118143459915614	236.0	2349.0	2660.7814153439153	14065.0	202.0	1410.0	1489.8323412698412	5228.0

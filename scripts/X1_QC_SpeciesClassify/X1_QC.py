@@ -1,10 +1,10 @@
 """
 Performs the QC to filter spots & looks at the distribution of the counts/genes.
 
-             INPUT: data/Visium8_{sample_name}_Hybrid/*
-             OUTPUT: * data/filter_ids/{sample_name}_filtered.txt ->
+             INPUT: * data/Visium8_{sample_name}_Hybrid/*
+                    * data/filter_ids/{sample_name}_filtered.txt ->
                               Contains the barcodes of the spots that passed QC.
-                     * figure_components/QC_figure/*
+             OUTPUT: * figure_components/QC_figure/*
 """
 
 ################################################################################
@@ -12,6 +12,7 @@ Performs the QC to filter spots & looks at the distribution of the counts/genes.
 ################################################################################
 import os, sys
 import stlearn as st
+import scanpy as sc
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -32,17 +33,29 @@ samples_2 = ['A/', 'B/', 'C/', 'D/']
                     # Loading in the data #
 ################################################################################
 prefixes = ['A1-', 'B1-', 'C1-', 'D1-']
-datas = [hs.load(hs.data_dir+samples_[i], prefixes[i]) for i in
-         range(len(samples_))]
+
+# Filtering the spots #
+filt_files = np.array( os.listdir(hs.data_dir+'filter_ids/') )
+filt_files = filt_files[np.argsort(filt_files)]
+spot_filters = [pd.read_csv(hs.data_dir+'filter_ids/'+filt_file,
+                           header=None).values[:,0] for filt_file in filt_files]
+for i in range(len(spot_filters)):
+    spot_filters[i] = [prefixes[i]+bc for bc in spot_filters[i]]
+
+datas = [hs.load_(hs.data_dir+samples_[i], prefixes[i])[spot_filters[i],:]
+         for i in range(len(samples_))]
 
 ################################################################################
                 # Performing QC spot filtering #
 ################################################################################
+#[sc.pp.filter_genes(data, min_cells=5) for data in datas]
+
 dfs = [data.to_df() for data in datas]
 df_all = pd.concat(dfs).transpose()
 df_all.values[np.isnan(df_all.values)] = 0 #Removing nans
 
 count_gene_ratios, umis, gene_counts = cell_QC.getQCMetrics(df_all)
+# after filtering minimums: 1.03827, 217, 200
 
 matplotlib.rcParams.update({'font.size': 8, 'font.weight': 'bold'})
 cutoffs = [0, 0, 200]
@@ -78,27 +91,12 @@ mito_gene_perc = [QC_hs.getGenePercents(data, mito, n_expr=True)
 mito_count_perc = [QC_hs.getGenePercents(data, mito, n_expr=False)
                                                               for data in datas]
 
-overlap_matrix = np.zeros((len(datas), len(datas)))
-for i, data in enumerate( datas ):
-    print(samples_[i])
-    print(f"Total genes detected: {len(data.var_names)}")
-    for j, data2 in enumerate( datas ):
-        overlap_matrix[i,j] = len(set(data.var_names).intersection(set(data2.var_names)))
+for i in range(len(datas)):
+    plt.hist(ribo_gene_perc[i], bins=100)
+    plt.show()
 
-# Extremely high gene recovery overlap between samples, which is great !
-"""
-Visium8_A1_Hybrid_treated/
-Total genes detected: 64591
-
-Visium8_B1_Hybrid_treated/
-Total genes detected: 64591
-
-Visium8_C1_Hybrid_untreated/
-Total genes detected: 64591
-
-Visium8_D1_Hybrid_untreated/
-Total genes detected: 64591
-"""
+    plt.hist(mito_gene_perc[i], bins=100)
+    plt.show()
 
 ################################################################################
             # Visualising total counts after filtering genes #
@@ -169,24 +167,6 @@ for i in range(len(sample_stats)):
     print(prefixes[i])
     print(sample_stats[i].loc['after',cols])
     print('\n')
-
-################################################################################
-                # Visualising total counts after QCd #
-################################################################################
-passed_bcs = df_all.columns.values[passed]
-datas_qcd = []
-for data in datas:
-    data_bcs = [bc for bc in passed_bcs if bc in data.obs_names]
-    datas_qcd.append( data[data_bcs, :] )
-
-for i, data in enumerate(datas_qcd):
-    st.pl.het_plot(data, cmap='Spectral_r',#r_cmap,
-                   size=12,
-                   use_het='total_counts', vmin=min_counts, vmax=max_counts)
-    vhs.dealWithPlot(True, True, True, out_plots,
-                     f'{samples_[i].split("_")[1]}_total_counts_QCd.pdf',
-                     dpi=300)
-
 
 
 

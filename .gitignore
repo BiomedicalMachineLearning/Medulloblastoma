@@ -1,8 +1,19 @@
+scripts/utils/__pycache__/helpers.cpython-37.pyc
+scripts/X1_QC_SpeciesClassify/__pycache__/species_helpers.cpython-37.pyc
+scripts/utils/__pycache__/stlearn_helpers.cpython-37.pyc
+scripts/utils/__pycache__/helpers.cpython-37.pyc
+scripts/utils/__pycache__/helpers.cpython-37.pyc
+
+# Figure components
+figure_components/QC_figure/*
+figure_components/species_figure/*
+
 # Related to X1_
 Visium8_*
-filter_ids/*
 spot_meta/QC/*
 .idea/
+data/seurat_rds/
+
 
 
 

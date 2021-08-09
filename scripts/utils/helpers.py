@@ -20,7 +20,7 @@ data_dir = project_dir+'data/'
 def setUp():
     os.chdir(project_dir)
 
-def load(sample_dir, prefix):
+def load_(sample_dir, prefix):
     """Loads in the data and filters for QC and data/mix spots"""
     data = st.Read10X(sample_dir)
     data.var_names_make_unique()
