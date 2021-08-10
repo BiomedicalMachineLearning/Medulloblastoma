@@ -7,11 +7,15 @@ scripts/X2_DEAnalysis/__pycache__/
 scripts/utils/postprocessing/__pycache__/__init__.cpython-37.pyc
 scripts/utils/postprocessing/format/__pycache__/__init__.cpython-37.pyc
 scripts/utils/postprocessing/format/__pycache__/format.cpython-37.pyc
+scripts/utils/tools/__pycache__/__init__.cpython-37.pyc
+scripts/utils/tools/pseudosampling/__pycache__/__init__.cpython-37.pyc
+scripts/utils/tools/pseudosampling/__pycache__/pseudosampling.cpython-37.pyc
 
 # Figure components
 figure_components/QC_figure/*
 figure_components/species_figure/*
 figure_components/DE_figures/*
+figure_components/giotto_figures/*
 
 # Related to X1_
 Visium8_*
@@ -42,6 +46,8 @@ data/DE_out/Pseudo_Limma_mouse/*.pdf
 data/DE_out/Pseudo_Limma_mouse/*.xlsx
 data/DE_out/Pseudo_Limma_mouse/*.rds
 data/DE_out/Pseudo_Limma_mouse/data/*
+
+# Related to X3_
 
 
 

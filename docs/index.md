@@ -93,10 +93,42 @@ X2_DEAnalysis/
                         OUTPUT: figure_components/DE_figures/*
                                 data/DE_out/Table_S2_MixSpotDE.xlsx
                     
+X3_GiottoEnrichment/
+
+    X1_giotto_spot_enrich.R -> Using the Giotto package for PAGE per-spot 
+                                                            enrichment analysis:
+                    https://genomebiology.biomedcentral.com/articles/10.1186/s13059-021-02286-2#Sec2
+                    http://spatialgiotto.rc.fas.harvard.edu/giotto.install.native.html#s_macos
+                    
+                    To perform enrichment for DE E2F targets & different 
+                    MB-SHH transcriptional programs, which were downloaded from
+                    Hovestadt, et al. into data/third_party_data/.
+                    
+                    INPUT: * data/seurat_rds/all.rds
+                           * data/Pseudo_Limma_human/gsea_out/
+                                                         gsea_results_human.xlsx
+                           * data/third_party_data/*_program.txt
+                           
+                    OUTPUT: * data/giotto_out/*
+      
+    X2_giotto_figures.py -> Creates the spatial plots of the per-spot enrichment
+                          in a consistent way across the samples for comparison.
+                          
+                    INPUT: * data/Visium8*/
+                           * data/filter_ids/*
+                           * data/giotto_out/SHH_gsea_v2_scores.txt
+                           
+                    OUTPUT: * figure_components/giotto_figures/*
+                    
+    X3_SHH_violins.py -> Creates violin plots showing the shift of the 
+                              different cell types in response to the treatment. 
+                              
+                         INPUT: * data/giotto_out/SHH_gsea_v2_scores.txt
+                              
+                         OUTPUT: * figure_components/giotto_figures/*
+                            
     
-    
-    
-    
+
     
     
     

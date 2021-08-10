@@ -29,7 +29,9 @@ Need to install requirements.txt.
         X2_DEAnalysis/ -> Contains scripts related to the DE analysis between
                             Palbo treated & control samples pseudobulked by 
                             human/mix/mouse spots. 
-                            Also includes subsequent GSEA analyses. 
+                            Also includes PCA & GSEA analyses. 
 
+        X3_GiottoEnrichment/ -> Contains scripts related to the Giotto 
+                                    enrichment analysis ('Per-spot enrichment').     
                  
 

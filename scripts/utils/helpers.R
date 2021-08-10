@@ -60,12 +60,28 @@ replaceByMapping <- function(mapping, labels){
   return(new_labels)
 }
 
-loadGeneSets <- function(load_SHH=T, load_gsea=T, load_gbm=T, human=T, filter_genes=NULL,
-                         min_gsea=T, add_prefix=F, load_cerebellum_types=T,
-                         load_gsea_v2=T) {
+loadGeneSets <- function(load_gsea_v2=T, load_SHH=T,
+                         human=T, filter_genes=NULL, add_prefix=F) {
   # Loads the compiled interesting gene sets based on my own 
   # GSEA analysis and also from third-party papers
-  # optional arguments indicate which gene sets to load. 
+  # optional arguments indicate which gene sets to load.
+
+  ######## Loading the gsea_v2 results using clusterProfiler ###########
+  if (load_gsea_v2) {
+    file_name <- "data/DE_out/Pseudo_Limma_human/gsea_out/gsea_results_human.xlsx"
+    gsea_humantreat <- as.data.frame(read_excel(file_name,
+                                                sheet = "human_human"))
+    rownames(gsea_humantreat) <- gsea_humantreat[,'ID']
+    terms_v2 <- c("HALLMARK_E2F_TARGETS")
+    gsea_humantreat <- gsea_humantreat[terms_v2,]
+
+    terms_list_v2 <- list()
+    for (i in 1:length(terms_v2)) {
+      genes <- str_split(gsea_humantreat[i, 'core_enrichment'], '/')[[1]]
+      terms_list_v2[[i]] <- genes
+    }
+  } else {terms_v2 <- c(); terms_list_v2 <- list()}
+
   ####### Load in the reference genes for different SHH subtypes ######
   sign_names <- c()
   sign_list <- list()
@@ -73,126 +89,19 @@ loadGeneSets <- function(load_SHH=T, load_gsea=T, load_gbm=T, human=T, filter_ge
     sign_names <- c()
     sign_list <- list()
     file_dir <- 'data/third_party_data/'
-    #file_names <- list.files(file_dir, pattern='.\\.txt')
-    file_names <- c("Hovestadt_SHHA-cellcycle_program.txt", "Hovestadt_SHHB-undiff_program.txt", "Hovestadt_SHHC-neuron_program.txt",                 
-                    "Vladoiu_SHH1_program.txt", "Vladoiu_SHH2_program.txt")
+    file_names <- c("Hovestadt_SHHA-cellcycle_program.txt",
+                    "Hovestadt_SHHB-undiff_program.txt",
+                    "Hovestadt_SHHC-neuron_program.txt")
     for (i in 1:length(file_names)) {
       df <- read.table(paste(file_dir, file_names[i], sep=''), header=T)
       sign_names <- c(sign_names, colnames(df))
       sign_list[[i]] <- df[,1]
     }
-  } 
-  
-  ####### Loading in the interesting genes from my GSEA analysis #######
-  if (load_gsea) {
-    #file_name <- "data/gsea_out/interesting_results/gsea_summary.xlsx"
-    file_name <- "data/DE_out/Pseudo_TMM_Limma_Voom/gsea_out/interesting_results/gsea_summary_human.treatment.xlsx"
-    gsea_humantreat <- as.data.frame(read_excel(file_name, 
-                                                sheet = "human.treatment"))
-    rownames(gsea_humantreat) <- gsea_humantreat[,'Term']
-    # From DESeq2 analysis #
-    # terms <- c("Cellular senescence", "Myogenesis", "GCNP SHH UP LATE.V1 UP",
-    #            "Hypoxia", "GCNP SHH UP EARLY.V1 UP", "SP1 data", "TP53 data",
-    #            "VEGF A UP.V1 DN", "Myc Targets V1", "E2F1 data", "G2-M Checkpoint",
-    #            "E2F Targets")
-    if (!min_gsea) {
-      terms <- c('Myogenesis', "GCNP SHH UP LATE.V1 UP", "E2F1 human", "E2F Targets",
-               "TP53 human", "PRC2 EZH2 UP.V1 UP", "Cell cycle", "Cell Cycle WP179",
-               "VEGF A UP.V1 DN", "Retinoblastoma Gene in Cancer WP2446",
-               "G1 to S cell cycle control WP45", "Epithelial Mesenchymal Transition",
-               "Cell adhesion molecules (CAMs)", "KRAS.600 UP.V1 UP")
-    } else {
-      terms <- c("E2F Targets","G2-M Checkpoint", "Epithelial Mesenchymal Transition",
-                 "Cell adhesion molecules (CAMs)")
-    }
-    #terms <- c("E2F1 data", "E2F Targets", "Cell adhesion molecules (CAMs)",
-    #           "KRAS.600 UP.V1 UP", "G1 to S cell cycle control WP45",
-    #           "Epithelial Mesenchymal Transition")
-    gsea_humantreat <- gsea_humantreat[terms,]
-    
-    terms_list <- list()
-    for (i in 1:length(terms)) {
-      genes <- str_split(gsea_humantreat[i, 'genes'], ';')[[1]]
-      terms_list[[i]] <- genes
-    }
-  } else {terms <- c(); terms_list <- list()}
-  
-  ######## Loading the gsea_v2 results using clusterProfiler ###########
-  if (load_gsea_v2) {
-    #file_name <- "data/gsea_out/interesting_results/gsea_summary.xlsx"
-    file_name <- "data/DE_out/Pseudo_Limma_human/gsea_out/gsea_results_human.xlsx"
-    gsea_humantreat <- as.data.frame(read_excel(file_name, 
-                                                sheet = "human_human"))
-    rownames(gsea_humantreat) <- gsea_humantreat[,'ID']
-    # From DESeq2 analysis #
-    # terms <- c("Cellular senescence", "Myogenesis", "GCNP SHH UP LATE.V1 UP",
-    #            "Hypoxia", "GCNP SHH UP EARLY.V1 UP", "SP1 data", "TP53 data",
-    #            "VEGF A UP.V1 DN", "Myc Targets V1", "E2F1 data", "G2-M Checkpoint",
-    #            "E2F Targets")
-    terms_v2 <- c("HALLMARK_E2F_TARGETS", "HALLMARK_G2M_CHECKPOINT" , "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION",
-               "GOBP_NEUROGENESIS")
-    #terms <- c("E2F1 data", "E2F Targets", "Cell adhesion molecules (CAMs)",
-    #           "KRAS.600 UP.V1 UP", "G1 to S cell cycle control WP45",
-    #           "Epithelial Mesenchymal Transition")
-    gsea_humantreat <- gsea_humantreat[terms_v2,]
-    
-    terms_list_v2 <- list()
-    for (i in 1:length(terms_v2)) {
-      genes <- str_split(gsea_humantreat[i, 'core_enrichment'], '/')[[1]]
-      terms_list_v2[[i]] <- genes
-    }
-  } else {terms_v2 <- c(); terms_list_v2 <- list()}
-  
-  ####### Loading genes from Laura which are associated with GBM EMT #######
-  if (load_gbm) {
-    gbm_names <- c('gbm_membrane', 'gbm_bulky', 'gbm_emt', 'kegg_ecm-recept')
-    gbm_lists <- list()
-    sheet_names <- c('All membrane-associated genes', 
-                      "Bulky Gene List - Survival", "EMT Gene List - Survival", 
-                     "AddByBrad")
-    for (i in 1:length(sheet_names)) {
-      if (i==1) {sheet_i <- 3} else {sheet_i <- 1}
-      
-      gbm_bulky <- as.data.frame(read_excel("data/third_party_data/Barnes2018_NatureCellBiology_MesynchymalGlioblastoma.xlsx", 
-                                            sheet = sheet_names[i]))[,sheet_i]
-      gbm_lists[[i]] <- gbm_bulky
-    }
-      
-  } else {gbm_names <- c(); gbm_lists <- list()}
-  
-  ####### Marking genes of different developing mouse cerebellum cell types #######
-  if (load_cerebellum_types) {
-    ranked_genes_file <- 'data/third_party_data/Vladoiu2019_Nature_scRNA/vladoiu_de_genes.txt'
-    ranked_genes_df <- read.csv(ranked_genes_file, sep='\t', row.names = 1)
-    # Listing just vasculature related cells #
-    cell_groups <- list('vasculature' = c('Pericytes', 'Red.blood.cells'), 
-                                          #''Meninges', Endothelial.cells', 'Microglia'),
-                        'mesenchymal' = c('Mesenchymal.stem.cells.1',
-                                          'Mesenchymal.stem.cells.2'))
-    cell_groups <- list('Astrocytes' = c('Astrocyte.Bergmann.glia.precursors'),
-                        'Early.proliferating.VZ.progenitors' = c("Early.proliferating.VZ.progenitors"),
-                        "Endothelial.cells" = c("Endothelial.cells"),
-                        "Pericytes" = c("Pericytes"),
-                        "Meninges" = c("Meninges"))
-    cell_group_names <- names(cell_groups)
-    cell_groups_list <- list()
-    for (i in 1:length(cell_groups)) {
-      cell_types <- cell_groups[[i]]
-      ranked_genes_group <- ranked_genes_df[,cell_types]
-      if (length(cell_types)>1) {
-        marker_genes <- unique( as.character(unlist(ranked_genes_group[1:30,])) )
-      } else {marker_genes <- unique( as.character(unlist(ranked_genes_group[1:30])) )}
-      cell_groups_list[[cell_group_names[i]]] <- toupper( marker_genes )
-    }
-    
-    cell_group_names <- c(cell_group_names, 'Astrocyte_lit')
-    cell_groups_list[['Astrocyte_lit']] <- c('AQP4', 'GFAP', 'FABP7', 'S100B', 
-                                             'GLT1', 'ALDOC', 'ALDH1L1', 'EEAT1',
-                                             'SLC1A2')
-  } else {cell_group_names <- c(); cell_groups_list <- list()}
-  
-  list_names <- c(sign_names, terms, terms_v2, gbm_names, cell_group_names)
-  gene_lists <- c(sign_list, terms_list, terms_list_v2, gbm_lists, cell_groups_list)
+  }
+
+  # Compiling the gene lists to run #
+  list_names <- c(sign_names, terms_v2)
+  gene_lists <- c(sign_list, terms_list_v2)
   names(gene_lists) <- list_names
   
   # Making sure is in the desired format & filtered to detected genes #
@@ -261,7 +170,7 @@ mergeData <- function(spatials, data_names){
   return(merged)
 }
 
-genGiottoFromSeurat <- function(merged, human_genes=T, #TODO impliment human_genes
+genGiottoFromSeurat <- function(merged, human_genes=T,
                                 save_plot=T, show_plot=T, save_dir='.', 
                                 python_path=NULL, assay='SCT', ...){
   # Takes in a Seurat object and converts to a Giotto object #
