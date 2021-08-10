@@ -20,10 +20,14 @@ figure_components/species_figure/*
 figure_components/DE_figures/*
 figure_components/giotto_figures/*
 figure_components/HumanAnnot_figures/*
+!figure_components/QC_figure/.gitkeep
+!figure_components/species_figure/.gitkeep
+!figure_components/DE_figures/.gitkeep
+!figure_components/giotto_figures/.gitkeep
+!figure_components/HumanAnnot_figures/.gitkeep
 
 # Related to X1_
 Visium8_*
-spot_meta/QC/*
 .idea/
 data/seurat_rds/
 
@@ -35,21 +39,26 @@ data/DE_out/Pseudo_Limma_human/*.xlsx
 data/DE_out/Pseudo_Limma_human/*.rds
 data/DE_out/Pseudo_Limma_human/data/*
 data/DE_out/Pseudo_Limma_human/gsea_out/*
+!data/DE_out/Pseudo_Limma_human/data/.gitkeep
+!data/DE_out/Pseudo_Limma_human/gsea_out/.gitkeep
 
 data/DE_out/Pseudo_Limma_mixHuman/*.pdf
 data/DE_out/Pseudo_Limma_mixHuman/*.xlsx
 data/DE_out/Pseudo_Limma_mixHuman/*.rds
 data/DE_out/Pseudo_Limma_mixHuman/data/*
+!data/DE_out/Pseudo_Limma_mixHuman/data/.gitkeep
 
 data/DE_out/Pseudo_Limma_mixMouse/*.pdf
 data/DE_out/Pseudo_Limma_mixMouse/*.xlsx
 data/DE_out/Pseudo_Limma_mixMouse/*.rds
 data/DE_out/Pseudo_Limma_mixMouse/data/*
+!data/DE_out/Pseudo_Limma_mixMouse/data/.gitkeep
 
 data/DE_out/Pseudo_Limma_mouse/*.pdf
 data/DE_out/Pseudo_Limma_mouse/*.xlsx
 data/DE_out/Pseudo_Limma_mouse/*.rds
 data/DE_out/Pseudo_Limma_mouse/data/*
+!data/DE_out/Pseudo_Limma_mouse/data/.gitkeep
 
 # Related to X3_
 
