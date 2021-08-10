@@ -170,7 +170,27 @@ X4_HumanSpotAnnotation/
                                                   *FetalBrain3Labels_spatial.pdf
     
     
-    
+X5_MouseSpotAnnotation/
+
+    X1_format_Vladoiu.py -> Compiles the dev. mouse cerebellum from
+                            Vladiou, et al. to use a reference to annotate mouse
+                            spots later. Very memory intensive; ran on HPC. 
+                         
+                            Need to download the supplementary count data from 
+                            GEO using the http link and untar so matches the 
+                            INPUT description:
+                            Ref. Paper: https://www.nature.com/articles/s41586-019-1158-7
+                            Data link: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE118068
+                            
+                            INPUT: * data/third_party_data/
+                                         Vladiou2019_Nature_scRNA/GSE118068_RAW/
+                            
+                            OUTPUT: * data/third_party_data/
+                                            Vladiou2019_Nature_scRNA/
+                                                     Vladoiu2019_lateRef.h5ad -> 
+                                                             Just P7 cell types.
+                                                             
+                            
     
     
     

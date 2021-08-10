@@ -10,6 +10,8 @@ scripts/utils/postprocessing/format/__pycache__/format.cpython-37.pyc
 scripts/utils/tools/__pycache__/__init__.cpython-37.pyc
 scripts/utils/tools/pseudosampling/__pycache__/__init__.cpython-37.pyc
 scripts/utils/tools/pseudosampling/__pycache__/pseudosampling.cpython-37.pyc
+scripts/utils/preprocessing/load_data/__pycache__/__init__.cpython-37.pyc
+scripts/utils/preprocessing/load_data/__pycache__/load_10X.cpython-37.pyc
 temp_tiling/
 data/scanpy_h5ads/*
 data/third_party_data/HCL2020/*
@@ -20,11 +22,13 @@ figure_components/species_figure/*
 figure_components/DE_figures/*
 figure_components/giotto_figures/*
 figure_components/HumanAnnot_figures/*
+figure_components/MouseAnnot_figures/*
 !figure_components/QC_figure/.gitkeep
 !figure_components/species_figure/.gitkeep
 !figure_components/DE_figures/.gitkeep
 !figure_components/giotto_figures/.gitkeep
 !figure_components/HumanAnnot_figures/.gitkeep
+!figure_components/MouseAnnot_figures/.gitkeep
 
 # Related to X1_
 Visium8_*
@@ -62,7 +66,9 @@ data/DE_out/Pseudo_Limma_mouse/data/*
 
 # Related to X3_
 
-
-
+# Related to X5_
+scripts/X5_MouseSpotAnnotation/format_Vladoiu.py
+scripts/X5_MouseSpotAnnotation/mix_analysis.py
+scripts/X5_MouseSpotAnnotation/Vladiou_SingleR.R
 
 
