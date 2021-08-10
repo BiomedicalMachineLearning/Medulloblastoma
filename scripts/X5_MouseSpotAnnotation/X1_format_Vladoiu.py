@@ -131,8 +131,6 @@ filt_counts = filt_counts.loc[genes, :]
                                 # Normalisation #
 ################################################################################
 cell_counts = filt_counts
-cell_meta = pd.read_csv(data_out+'Vladoiu2019_cell_meta.txt',
-                                                          sep='\t', index_col=0)
 cell_ad = AnnData(cell_counts.transpose(), obs=cell_meta)
 cell_ad.raw = cell_ad
 
