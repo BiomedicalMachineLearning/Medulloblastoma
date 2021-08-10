@@ -3,10 +3,15 @@ scripts/X1_QC_SpeciesClassify/__pycache__/species_helpers.cpython-37.pyc
 scripts/utils/__pycache__/stlearn_helpers.cpython-37.pyc
 scripts/utils/__pycache__/helpers.cpython-37.pyc
 scripts/utils/__pycache__/helpers.cpython-37.pyc
+scripts/X2_DEAnalysis/__pycache__/
+scripts/utils/postprocessing/__pycache__/__init__.cpython-37.pyc
+scripts/utils/postprocessing/format/__pycache__/__init__.cpython-37.pyc
+scripts/utils/postprocessing/format/__pycache__/format.cpython-37.pyc
 
 # Figure components
 figure_components/QC_figure/*
 figure_components/species_figure/*
+figure_components/DE_figures/*
 
 # Related to X1_
 Visium8_*
@@ -15,10 +20,13 @@ spot_meta/QC/*
 data/seurat_rds/
 
 # Related to X2_
+data/DE_out/Table_S2_MixSpotsDE.xlsx
+
 data/DE_out/Pseudo_Limma_human/*.pdf
 data/DE_out/Pseudo_Limma_human/*.xlsx
 data/DE_out/Pseudo_Limma_human/*.rds
 data/DE_out/Pseudo_Limma_human/data/*
+data/DE_out/Pseudo_Limma_human/gsea_out/*
 
 data/DE_out/Pseudo_Limma_mixHuman/*.pdf
 data/DE_out/Pseudo_Limma_mixHuman/*.xlsx
@@ -34,6 +42,7 @@ data/DE_out/Pseudo_Limma_mouse/*.pdf
 data/DE_out/Pseudo_Limma_mouse/*.xlsx
 data/DE_out/Pseudo_Limma_mouse/*.rds
 data/DE_out/Pseudo_Limma_mouse/data/*
+
 
 
 
