@@ -32,6 +32,10 @@ Need to install requirements.txt.
                             Also includes PCA & GSEA analyses. 
 
         X3_GiottoEnrichment/ -> Contains scripts related to the Giotto 
-                                    enrichment analysis ('Per-spot enrichment').     
+                                    enrichment analysis ('Per-spot enrichment').
+                                    
+        X4_HumanSpotAnnotation/ -> Contains scripts related to annotating spots
+                                    by dominant cell type using reference 
+                                    scRNA-seq data using SingleR.
                  
 

@@ -10,12 +10,16 @@ scripts/utils/postprocessing/format/__pycache__/format.cpython-37.pyc
 scripts/utils/tools/__pycache__/__init__.cpython-37.pyc
 scripts/utils/tools/pseudosampling/__pycache__/__init__.cpython-37.pyc
 scripts/utils/tools/pseudosampling/__pycache__/pseudosampling.cpython-37.pyc
+temp_tiling/
+data/scanpy_h5ads/*
+data/third_party_data/HCL2020/*
 
 # Figure components
 figure_components/QC_figure/*
 figure_components/species_figure/*
 figure_components/DE_figures/*
 figure_components/giotto_figures/*
+figure_components/HumanAnnot_figures/*
 
 # Related to X1_
 Visium8_*

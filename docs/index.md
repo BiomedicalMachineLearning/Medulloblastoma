@@ -127,9 +127,47 @@ X3_GiottoEnrichment/
                               
                          OUTPUT: * figure_components/giotto_figures/*
                             
-    
+X4_HumanSpotAnnotation/
 
-    
+    X1_SME_normalise.py -> Loads in the data, performs SME normalisation, &
+                            saves output.
+                            
+                            INPUT: * data/Visium8*/
+                            OUTPUT: * data/scanpy_h5ads/*_all_species_SME.h5ad
+
+    X2_FetalBrain3_SingleR.R -> Loads in the fetal brain data, & uses this as a
+                                reference to label cells by dominant cell type.
+                    First download the fetal human brain data to match INPUT:
+                    Ref. paper: https://www.nature.com/articles/s41586-020-2157-4
+                    Download link: https://db.cngb.org/HCL/gallery.html?tissue=Fetal-Brain3
+
+                    INPUT: * data/scanpy_h5ads/*_all_species_SME.h5ad
+                           * data/third_party_data/HCL2020/Fetal-Brain3_dge.txt
+                           * data/third_party_data/HCL2020/Fetal-Brain3_Anno.txt
+                           
+                    OUTPUT: * data/spot_meta/*FetalBrain3singleR_scores.txt
+                            * figure_components/HumanAnnot_figures/
+
+    X3_FetalBrain3_umap.py -> Loads in the fetal brain data, & UMAP from seurat 
+                    to display the data in a figure.
+                  Ref. paper: https://www.nature.com/articles/s41586-020-2157-4
+                  Download link: https://db.cngb.org/HCL/gallery.html?tissue=Fetal-Brain3
+                  
+                  INPUT: * data/third_party_data/HCL2020/Fetal-Brain3_dge.txt
+                         * data/third_party_data/HCL2020/Fetal-Brain3_Anno.txt
+                         
+                  OUTPUT: * data/third_party_data/HCL2020/FetalBrain3.h5ad
+                          * figure_components/HumanAnnot_figures/*
+
+    X4_singleR_humanLabel_panels.py -> Label the data according to the human 
+                        labels from the Fetal Human 3 reference & output figure.
+                      
+                      INPUT: * data/scanpy_h5ads/*_all_species_SME.h5ad
+                             * data/spot_meta/species_classify_v2/
+                                           *FetalBrain3_singleR_scores_human.txt
+                                           
+                      OUTPUT: * figure_components/HumanAnnot_figures/
+                                                  *FetalBrain3Labels_spatial.pdf
     
     
     
