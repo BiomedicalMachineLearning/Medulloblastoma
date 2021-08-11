@@ -12,6 +12,7 @@ scripts/utils/tools/pseudosampling/__pycache__/__init__.cpython-37.pyc
 scripts/utils/tools/pseudosampling/__pycache__/pseudosampling.cpython-37.pyc
 scripts/utils/preprocessing/load_data/__pycache__/__init__.cpython-37.pyc
 scripts/utils/preprocessing/load_data/__pycache__/load_10X.cpython-37.pyc
+scripts/.DS_Store
 temp_tiling/
 data/scanpy_h5ads/*
 data/third_party_data/HCL2020/*

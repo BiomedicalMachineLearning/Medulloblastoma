@@ -4,7 +4,17 @@ MedulloBlastoma patient-derived xenograft (MB-PDX) of
 Visium spatial RNA-seq between Palbociclib treated & control samples.
 
 ## Installation
-Need to install requirements.txt.
+Used Python 3.7.10.
+Python dependency install:
+
+    pip install -r requirements.txt
+    git clone https://github.com/BiomedicalMachineLearning/stLearn.git
+    
+Need to install stLearn and add to your python path:
+
+     git clone https://github.com/BiomedicalMachineLearning/stLearn.git
+     
+For R scripts, see session info in docs/r_session.md
 
 ## Quick Index
 
