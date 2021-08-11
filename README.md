@@ -8,7 +8,6 @@ Used Python 3.7.10.
 Python dependency install:
 
     pip install -r requirements.txt
-    git clone https://github.com/BiomedicalMachineLearning/stLearn.git
     
 Need to install stLearn and add to your python path:
 
