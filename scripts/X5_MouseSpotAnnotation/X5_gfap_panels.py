@@ -31,7 +31,6 @@ out_plots = 'figure_components/MouseAnnot_figures/'
 ################################################################################
                     # Loading data & normalising #
 ################################################################################
-# read in visium dataset downloaded from: support.10xgenomics.com/spatial-gene-expression/datasets/1.0.0/V1_Breast_Cancer_Block_A_Section_2
 samples = ['A1', 'B1', 'C1', 'D1']
 datas = [sc.read_h5ad(f'{data_dir}scanpy_h5ads/{samples[i]}_all_species_SME.h5ad')
          for i in range(len(samples))]
