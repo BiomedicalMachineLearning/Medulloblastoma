@@ -67,8 +67,7 @@ data/DE_out/Pseudo_Limma_mouse/data/*
 # Related to X3_
 
 # Related to X5_
-scripts/X5_MouseSpotAnnotation/format_Vladoiu.py
-scripts/X5_MouseSpotAnnotation/mix_analysis.py
-scripts/X5_MouseSpotAnnotation/Vladiou_SingleR.R
+data/third_party_data/Vladiou2019_Nature_scRNA/Vladoiu2019_lateRef.h5ad
+
 
 

@@ -190,21 +190,50 @@ X5_MouseSpotAnnotation/
                                                      Vladoiu2019_lateRef.h5ad -> 
                                                              Just P7 cell types.
                                                              
+    X2_Vladoiu_SingleR.R -> Performs the automated annotation of the mouse spots
+                            using the Vladoiu mouse cerbellum data as a reference.
                             
+                            INPUT: * data/scanpy_h5ads/*_all_species_SME.h5ad
+                                   * data/third_party_data/
+                                              Vladiou2019_Nature_scRNA/
+                                                        Vladoiu2019_lateRef.h5ad
+                                                        
+                            OUTPUT: * data/spot_meta/species_classify_v2/
+                                               *Vladoiu_singleR_scores_mouse.txt
+                                    * figure_components/MouseAnnot_figures/   
+                                    
+    X3_singleR_mouseLabel_panels.py -> Label the data according to the 
+                                  mouse labels from the Vladiou & output figure.
+                          
+                          INPUT: * data/scanpy_h5ad/*_all_species_SME.h5ad
+                                 * data/spot_meta/species_classify_v2/
+                                               *Vladoiu_singleR_scores_mouse.txt
+                          OUTPUT: * figure_components/MouseAnnot_figures/
+                                                         *VladLabels_spatial.pdf
+                                                         
+    X4_border_enrichment.py -> Perform FET to test for enrichment of
+                        dominant spot cell types for the border spots to provide
+                        statistical evidence for astrocytes at the border.
+
+                        INPUT: * data/Visium8*/
+                               * data/scanpy_h5ad/*_all_species_SME.h5ad
+                               * data/spot_meta/species_classify_v2/
+                                               *Vladoiu_singleR_scores_mouse.txt
+
+                        OUTPUT: * data/spot_meta/astro_enrich_stats.xlsx  
+                                * figure_components/MouseAnnot_figures/
+                                                             *border_spatial.pdf
+                        
+    X5_gfap_panels.py -> Generating gene plot panels to show GFAP 
+                                 expression as prognostic for astrocytes. 
+                                 
+                       INPUT: data/scanpy_h5ad/*_all_species_SME.h5ad
+                              data/spot_meta/species_classify_v2/
+                                               *Vladoiu_singleR_scores_mouse.txt
+                       OUTPUT: figure_components/MouseAnnot_figures/
+                                                               *Gfap_spatial.pdf                                           
     
     
-    
-    
-
-    
-
-
-
-
-
-
-
-
 
 
                    
