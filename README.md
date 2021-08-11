@@ -22,6 +22,8 @@ For R scripts, see session info in docs/r_session.md
         index.md -> Index which describes each script in scripts/ in terms of 
                     INPUT/OUTPUT, and brief description of function.
                     
+        r_session.md -> Details on the r session used to run the R scripts. 
+                    
     figure_components/ -> Contains the outputted components which are used to 
                             create the paper figures. Is grouped according to 
                             the figure. You can see index.md for which script
