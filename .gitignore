@@ -17,6 +17,8 @@ temp_tiling/
 data/scanpy_h5ads/*
 data/third_party_data/HCL2020/*
 
+docs/self_notes.md
+
 # Figure components
 figure_components/QC_figure/*
 figure_components/species_figure/*
