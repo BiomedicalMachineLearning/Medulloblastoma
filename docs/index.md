@@ -6,7 +6,7 @@ X1_QC_SpeciesClassify/
 
     X1_QC.py -> Performs the QC to filter spots & looks at the distribution of 
                                                                the counts/genes.
-             INPUT:  * data/Visium8_{sample_name}_Hybrid/*
+             INPUT:  * data/Visium8_{sample_name}_*/*
              OUTPUT: * data/filter_ids/{sample_name}_filtered.txt -> 
                               Contains the barcodes of the spots that passed QC.       
                      * figure_components/QC_figure/*
@@ -16,7 +16,7 @@ X1_QC_SpeciesClassify/
                                 giotto enrichment analysis.
                                 NOTE: memory intensive, had to run on a hpc.
                                 
-                    INPUT: * data/Visium8_{sample_name}_Hybrid/*
+                    INPUT: * data/Visium8_{sample_name}_*/*
                            * data/filter_ids/{sample_name}_filtered.txt
                            
                     OUTPUT: * seurat_rds/*
@@ -32,7 +32,7 @@ X1_QC_SpeciesClassify/
     X4_species_classify.py -> Uses the species scores to classify spots by into
                                                                 human/mix/mouse.
                                     
-                     INPUT: * data/Visium8*/
+                     INPUT: * data/Visium8_{sample_name}_*/*
                             * spot_meta/*_species.txt
                      OUTPUT: * data/spot_meta/species_classify_v2/
                              * figure_components/species_figure/
@@ -114,7 +114,7 @@ X3_GiottoEnrichment/
     X2_giotto_figures.py -> Creates the spatial plots of the per-spot enrichment
                           in a consistent way across the samples for comparison.
                           
-                    INPUT: * data/Visium8*/
+                    INPUT: * data/Visium8_{sample_name}_*/*
                            * data/filter_ids/*
                            * data/giotto_out/SHH_gsea_v2_scores.txt
                            
@@ -132,7 +132,7 @@ X4_HumanSpotAnnotation/
     X1_SME_normalise.py -> Loads in the data, performs SME normalisation, &
                             saves output.
                             
-                            INPUT: * data/Visium8*/
+                            INPUT: * data/Visium8_{sample_name}_*/*
                             OUTPUT: * data/scanpy_h5ads/*_all_species_SME.h5ad
 
     X2_FetalBrain3_SingleR.R -> Loads in the fetal brain data, & uses this as a
@@ -215,7 +215,7 @@ X5_MouseSpotAnnotation/
                         dominant spot cell types for the border spots to provide
                         statistical evidence for astrocytes at the border.
 
-                        INPUT: * data/Visium8*/
+                        INPUT: * data/Visium8_{sample_name}_*/*
                                * data/scanpy_h5ad/*_all_species_SME.h5ad
                                * data/spot_meta/species_classify_v2/
                                                *Vladoiu_singleR_scores_mouse.txt
