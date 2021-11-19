@@ -245,10 +245,24 @@ X6_CellCellInteraction/
                                 cell type permutation to see which cell types are
                                 interacting via these LR pairs.
 
+    X3_clusterProfiler_mouse_LR-analysis.R -> Using cluster profiler to do an 
+                over-representation analysis on the mouse LR pairs with atleast 
+                10 significant spots on the tumour border. But this time adding 
+                them all to the same gene list, instead of performing 
+                                                  independently for each sample.
 
+             INPUT:  * data/cci/mouse/interface_overlaps.xlsx
+             OUTPUT: * figure_components/cci_figures/_mouse_LR-genes_GSEAemap.pdf
+                     * data/cci/mouse/gsea_results_mouse_LR-genes.xlsx
 
 	    
-    
+    X4_clusterProfiler_human_LR-analysis.R -> # Using cluster profiler to do an 
+                over-representation analysis on the LR pairs with atleast 4 
+                significant spots on the tumour border.
+
+            INPUT:  * data/cci/human/*_border_enriched_LRs.txt
+            OUTPUT: * figure_components/cci_figures/_human_LR-genes_GSEAemap.pdf
+                    * data/cci/mouse/gsea_results_human_LR-genes.xlsx
 
 
                    
