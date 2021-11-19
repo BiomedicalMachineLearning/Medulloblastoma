@@ -232,7 +232,22 @@ X5_MouseSpotAnnotation/
                                                *Vladoiu_singleR_scores_mouse.txt
                        OUTPUT: figure_components/MouseAnnot_figures/
                                                                *Gfap_spatial.pdf                                           
-    
+X6_CellCellInteraction/
+
+	X1_mouse_LR-CCI.ipynb -> Runs the stlearn LR interaction analysis for mouse genes, 
+				finds LRs which have spots on the border, looks at how these
+				are identified across samples, & then performs
+				cell type permutation to see which cell types are 
+				interacting via these LR pairs.
+
+	X2_human_LR-CCI.ipynb ->  Runs the stlearn LR interaction analysis for mouse genes,
+                                finds LRs which have spots on the border, & then performs
+                                cell type permutation to see which cell types are
+                                interacting via these LR pairs.
+
+
+
+	    
     
 
 

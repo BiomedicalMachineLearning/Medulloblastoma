@@ -54,4 +54,9 @@ For R scripts, see session info in docs/r_session.md
                                     mouse spots
                                     by dominant cell type using reference 
                                     scRNA-seq data using SingleR.
+
+	X6_CellCellInteraction/ -> Contains code related to called ligand-
+				   receptor & cell-cell interactions in the
+				   interface region for human & mouse tissue.  
                  
+
