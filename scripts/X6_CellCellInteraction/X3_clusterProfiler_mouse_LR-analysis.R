@@ -28,6 +28,7 @@ library(org.Hs.eg.db)
 library(DOSE)
 source('scripts/X6_CellCellInteraction/clusterProfiler_helpers.R')
 
+# Making sure in correct directory #
 work_dir <- rstudioapi::getSourceEditorContext()$path
 work_dir <- str_split(work_dir, 'scripts/')[[1]][1]
 setwd(work_dir)
@@ -83,7 +84,6 @@ plot_name <- paste(out_plots, species, suffix, 'GSEAemap.pdf', sep='_')
 pdf(plot_name, width=12, height=10)
 print(p)
 dev.off()
-
 
 
 
