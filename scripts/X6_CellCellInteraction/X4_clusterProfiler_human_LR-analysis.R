@@ -59,15 +59,9 @@ for (i in 1:length(samples)) {
   lrs <- rownames(lr_df)
   lrs <- str_remove_all(lrs, 'hg38-')
   all_lrs <- c(all_lrs, lrs)
-  #lrs_split <- as.data.frame( str_split(lrs, '_') )
-  #ls <- as.character(lrs_split[1,])
-  #rs <- as.character(lrs_split[2,])
-  #genes <- unique( c(ls, rs) )
-  #print(length(genes))
-  #samp_genes[[samples[i]]] <- genes
 }
 
-### Getting those present in two samples ####
+### Getting those present in atleast two samples ####
 all_lrs <- unique( all_lrs )
 lr_counts <- integer(length(all_lrs))
 for (i in 1:length(samples)){

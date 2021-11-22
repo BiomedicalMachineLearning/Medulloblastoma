@@ -35,6 +35,7 @@ import scripts.utils.postprocessing.format.format as form
 
 data_dir = hs.data_dir
 out_dir = 'data/spot_meta/'
+out_dir2 = 'data/scanpy_h5ads/'
 annot_dir = 'data/spot_meta/species_classify_v2/'
 out_plots = 'figure_components/MouseAnnot_figures/'
 
@@ -92,6 +93,9 @@ border_data = datas[0].concatenate(datas[1:],
                                    batch_key="sample", uns_merge="first",
                                     batch_categories=samples
                                    )
+
+# Saving for use downstream #
+border_data.write_h5ad(out_dir2+'integrated_border.h5ad', compression='gzip')
 
 for samp in samples:
     sc.pl.spatial(border_data[border_data.obs['sample']==samp,:], color='sample',

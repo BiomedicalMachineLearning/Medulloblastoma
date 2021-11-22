@@ -221,6 +221,7 @@ X5_MouseSpotAnnotation/
                                                *Vladoiu_singleR_scores_mouse.txt
 
                         OUTPUT: * data/spot_meta/astro_enrich_stats.xlsx  
+				* data/scanpy_h5ads/integrated_border.h5ad
                                 * figure_components/MouseAnnot_figures/
                                                              *border_spatial.pdf
                         
@@ -240,10 +241,21 @@ X6_CellCellInteraction/
 				cell type permutation to see which cell types are 
 				interacting via these LR pairs.
 
+			INPUT: * data/scanpy_h5ads/MB_*_all-mouse_LRResults.h5ad
+               	               * data/scanpy_h5ads/integrated_border.h5ad
+               		       * data/spot_meta/species_classify_v2/*_Vladoiu_singleR_scores_mouse.txt
+        		OUTPUT: * data/cci/mouse/*_border_enriched_LRs.txt
+                		* data/cci/mouse/interface_overlaps.xlsx	
+
 	X2_human_LR-CCI.ipynb ->  Runs the stlearn LR interaction analysis for mouse genes,
                                 finds LRs which have spots on the border, & then performs
                                 cell type permutation to see which cell types are
                                 interacting via these LR pairs.
+
+			INPUT: * data/scanpy_h5ads/MB_*_all-human_LRResults.h5ad
+                               * data/scanpy_h5ads/integrated_border.h5ad
+                               * data/spot_meta/species_classify_v2/*_FetalBrain3_singleR_scores_human.txt
+                        OUTPUT: * data/cci/human/*_border_enriched_LRs.txt			
 
     X3_clusterProfiler_mouse_LR-analysis.R -> Using cluster profiler to do an 
                 over-representation analysis on the mouse LR pairs with atleast 

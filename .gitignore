@@ -25,20 +25,20 @@ data/third_party_data/HCL2020/*
 ../data/third_party_data/Vladiou2019_Nature_scRNA/.DS_Store
 
 docs/self_notes.md
-
-# Figure components
 figure_components/QC_figure/*
 figure_components/species_figure/*
 figure_components/DE_figures/*
 figure_components/giotto_figures/*
 figure_components/HumanAnnot_figures/*
 figure_components/MouseAnnot_figures/*
+figure_components/cci_figures/*
 !figure_components/QC_figure/.gitkeep
 !figure_components/species_figure/.gitkeep
 !figure_components/DE_figures/.gitkeep
 !figure_components/giotto_figures/.gitkeep
 !figure_components/HumanAnnot_figures/.gitkeep
 !figure_components/MouseAnnot_figures/.gitkeep
+!figure_components/cci_figures/.gitkeep
 
 # Related to X1_
 Visium8_*
@@ -77,7 +77,15 @@ data/DE_out/Pseudo_Limma_mouse/data/*
 # Related to X3_
 
 # Related to X5_
+data/third_party_data/Vladiou2019_Nature_scRNA/GSE118068_RAW/
 data/third_party_data/Vladiou2019_Nature_scRNA/Vladoiu2019_lateRef.h5ad
 
+# Related to X6_
+data/.DS_Store
+data/._.DS_Store
+data/cci/human/gsea_results_human_LR-genes.rds
+data/cci/mouse/gsea_results_mouse_LR-genes.rds
+figure_components/.DS_Store
+figure_components/._.DS_Store
 
 
