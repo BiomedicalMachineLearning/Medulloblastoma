@@ -19,10 +19,6 @@ data/third_party_data/HCL2020/*
 !data/third_party_data/HCL2020/.gitkeep
 
 docs/self_notes.md
-
-docs/self_notes.md
-
-# Figure components
 figure_components/QC_figure/*
 figure_components/species_figure/*
 figure_components/DE_figures/*
