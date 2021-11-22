@@ -17,6 +17,12 @@ temp_tiling/
 data/scanpy_h5ads/*
 data/third_party_data/HCL2020/*
 !data/third_party_data/HCL2020/.gitkeep
+../.DS_Store
+../data/.DS_Store
+../data/DE_out/.DS_Store
+../data/spot_meta/.DS_Store
+../data/third_party_data/.DS_Store
+../data/third_party_data/Vladiou2019_Nature_scRNA/.DS_Store
 
 docs/self_notes.md
 figure_components/QC_figure/*
