@@ -1,3 +1,5 @@
+.DS_Store
+data/DE_out/.DS_Store
 scripts/utils/__pycache__/helpers.cpython-37.pyc
 scripts/X1_QC_SpeciesClassify/__pycache__/species_helpers.cpython-37.pyc
 scripts/utils/__pycache__/stlearn_helpers.cpython-37.pyc
