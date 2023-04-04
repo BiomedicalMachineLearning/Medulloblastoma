@@ -276,5 +276,26 @@ X6_CellCellInteraction/
             OUTPUT: * figure_components/cci_figures/_human_LR-genes_GSEAemap.pdf
                     * data/cci/mouse/gsea_results_human_LR-genes.xlsx
 
-
-                   
+X7_revision-analysis/
+    -> Analysis conducted during revision process, performed by 
+        Dr. Guiyan Ni, and Onkar Mulay.
+        
+     X1_RNAScope_Unlog_MKI67_vs_Gfap.ipynb -> Is actuallly an R jupyter notebook.
+                                Contains the analysis of the RNAScope data, used
+                                to validate increased expression of astrocytes,
+                                microglia, and proliferation markers at the 
+                                tumour border.
+                                -> Performed by Onkar Mulay.
+                                    * https://www.linkedin.com/in/onkar-mulay-25099a157/?originalSubdomain=in
+     
+     X2_athena_plot.nb.html -> R markdown html. 
+                                Uses entropy of gene expression per spot, 
+                                between control and Palbociclib treated ST-seq 
+                                samples, to show reduction in cellular 
+                                heterogeneity in the treatment condition. 
+                                -> Performed by Dr. Guiyan Ni.
+                                    * https://www.linkedin.com/in/guiyan-ni-3698851a3/?originalSubdomain=au
+                                
+        
+        
+                
