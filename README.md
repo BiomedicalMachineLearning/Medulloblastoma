@@ -58,5 +58,10 @@ For R scripts, see session info in docs/r_session.md
 	X6_CellCellInteraction/ -> Contains code related to called ligand-
 				   receptor & cell-cell interactions in the
 				   interface region for human & mouse tissue.  
+				   
+	X7_revision-analysis/ -> Analysis conducted during revision process, 
+	                                performed by Dr. Guiyan Ni, and Onkar Mulay.
+	                                
+	                                
                  
 
